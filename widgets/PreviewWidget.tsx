@@ -28,8 +28,10 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
-} from '@formily/next'
-import { Card, Range, Rating } from '@alifd/next'
+} from '@formily/antd'
+//from '@formily/next'
+import { Card, Rate } from 'antd'
+// import { Card, Range, Rating } from "@alifd/next"
 import { TreeNode } from '@designable/core'
 import { transformToSchema } from '@designable/formily-transformer'
 
@@ -71,8 +73,7 @@ const SchemaField = createSchemaField({
     TreeSelect,
     Upload,
     Card,
-    Range,
-    Rating,
+    Rate,
   },
 })
 
@@ -83,6 +84,7 @@ export interface IPreviewWidgetProps {
 export const PreviewWidget: React.FC<IPreviewWidgetProps> = (props) => {
   const form = useMemo(() => createForm(), [])
   const { form: formProps, schema } = transformToSchema(props.tree)
+  console.log(schema)
   return (
     <Form {...formProps} form={form}>
       <SchemaField schema={schema} />

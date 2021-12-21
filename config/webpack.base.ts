@@ -109,8 +109,16 @@ export default {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: ['url-loader'],
+        test: /\.(woff|woff2|ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'images/[name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.html?$/,

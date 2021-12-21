@@ -11,16 +11,17 @@ export const ActionsWidget = observer(() => {
   useEffect(() => {
     loadInitialSchema(designer)
   }, [])
-  const supportLocales = ['zh-cn', 'en-us', 'ko-kr']
+  const supportLocales = ['zh-cn', 'en-us']
   useEffect(() => {
+    console.log(GlobalRegistry.getDesignerLanguage())
     if (!supportLocales.includes(GlobalRegistry.getDesignerLanguage())) {
-      GlobalRegistry.setDesignerLanguage('zh-cn')
+      GlobalRegistry.setDesignerLanguage('en-us')
     }
+    GlobalRegistry.setDesignerLanguage('en-us')
   }, [])
   return (
     <Space style={{ marginRight: 10 }}>
-      <Button href="https://designable-antd.formilyjs.org">Ant Design</Button>
-      <Radio.Group
+      {/* <Radio.Group
         value={GlobalRegistry.getDesignerLanguage()}
         optionType="button"
         options={[
@@ -31,11 +32,7 @@ export const ActionsWidget = observer(() => {
         onChange={(e) => {
           GlobalRegistry.setDesignerLanguage(e.target.value)
         }}
-      />
-      <Button href="https://github.com/alibaba/designable" target="_blank">
-        <GithubOutlined />
-        Github
-      </Button>
+      /> */}
       <Button
         onClick={() => {
           saveSchema(designer)

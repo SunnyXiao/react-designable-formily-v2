@@ -7,15 +7,16 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server  --config config/webpack.dev.ts",
+    "build": "webpack-cli --config config/webpack.prod.ts",
     "rimrafall": "rimraf node_modules"
   },
   "dependencies": {
     "@alifd/next": "^1.25.8",
     "@ant-design/icons": "^4.7.0",
-    "@designable/core": "^1.0.0-beta.41",
-    "@designable/formily-antd": "^1.0.0-beta.41",
-    "@designable/react": "^1.0.0-beta.41",
-    "@designable/react-settings-form": "^1.0.0-beta.41",
+    "@designable/core": "^1.0.0-beta.42",
+    "@designable/formily-antd": "^1.0.0-beta.42",
+    "@designable/react": "^1.0.0-beta.42",
+    "@designable/react-settings-form": "^1.0.0-beta.42",
     "@formily/antd": "^2.0.5",
     "@formily/next": "2.0.2",
     "@formily/react": "^2.0.5",
