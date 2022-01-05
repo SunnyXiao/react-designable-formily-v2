@@ -1,10 +1,11 @@
 import 'antd/dist/antd.less'
-import '@alifd/next/dist/next.css'
+import './assets/css/app.css'
 import React, { useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import {
   Designer,
   DesignerToolsWidget,
+  Workbench,
   ViewToolsWidget,
   Workspace,
   OutlineTreeWidget,
@@ -18,8 +19,6 @@ import {
   ViewPanel,
   SettingsPanel,
   ComponentTreeWidget,
-  Workbench,
-  IconWidget,
 } from '@designable/react'
 import {
   SettingsForm,
@@ -66,31 +65,24 @@ import {
   FormLayout,
   FormGrid,
 } from '@designable/formily-antd'
+
 setNpmCDNRegistry('//unpkg.com')
 
 GlobalRegistry.registerDesignerLocales({
-  'zh-CN': {
-    sources: {
-      Inputs: '输入控件',
-      Layouts: '布局组件',
-      Arrays: '自增组件',
-      Displays: '展示组件',
-    },
-  },
+  // 'zh-CN': {
+  //   sources: {
+  //     Inputs: '输入控件',
+  //     Layouts: '布局组件',
+  //     Arrays: '自增组件',
+  //     Displays: '展示组件',
+  //   },
+  // },
   'en-US': {
     sources: {
       Inputs: 'Inputs',
       Layouts: 'Layouts',
       Arrays: 'Arrays',
       Displays: 'Displays',
-    },
-  },
-  'ko-KR': {
-    sources: {
-      Inputs: '입력',
-      Layouts: '레이아웃',
-      Arrays: '배열',
-      Displays: '디스플레이',
     },
   },
 })
@@ -118,9 +110,7 @@ const App = () => {
     <Designer engine={engine}>
       <Workbench>
         <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
-          {/* left */}
           <CompositePanel>
-            {/** components panel*/}
             <CompositePanel.Item title="panels.Component" icon="Component">
               <ResourceWidget
                 title="sources.Inputs"
@@ -165,7 +155,6 @@ const App = () => {
               <HistoryWidget />
             </CompositePanel.Item>
           </CompositePanel>
-          {/**workspace */}
           <Workspace id="form">
             <WorkspacePanel>
               <ToolbarPanel>
@@ -222,10 +211,8 @@ const App = () => {
               </ViewportPanel>
             </WorkspacePanel>
           </Workspace>
-          {/* Setting Panel */}
           <SettingsPanel title="panels.PropertySettings">
-            {/* <SettingsForm uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" /> */}
-            <SettingsForm />
+            <SettingsForm uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" />
           </SettingsPanel>
         </StudioPanel>
       </Workbench>

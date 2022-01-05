@@ -1,0 +1,7 @@
+.logo-bg {
+  width: 84px;
+  height: 30px;
+  background-image: url('../images/CWG-Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

@@ -5,24 +5,24 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import autoprefixer from 'autoprefixer'
 //import { getThemeVariables } from 'antd/dist/theme'
 
-const getWorkspaceAlias = () => {
-  const basePath = path.resolve(__dirname)
-  const pkg = fs.readJSONSync(path.resolve(basePath, '../package.json')) || {}
-  const results = {}
-  const workspaces = pkg.workspaces
-  if (Array.isArray(workspaces)) {
-    workspaces.forEach((pattern) => {
-      const { found } = new GlobSync(pattern, { cwd: basePath })
-      found.forEach((name) => {
-        const pkg = fs.readJSONSync(
-          path.resolve(basePath, name, '../package.json'),
-        )
-        results[pkg.name] = path.resolve(basePath, name, '../src')
-      })
-    })
-  }
-  return results
-}
+// const getWorkspaceAlias = () => {
+//   const basePath = path.resolve(__dirname)
+//   const pkg = fs.readJSONSync(path.resolve(basePath, '../package.json')) || {}
+//   const results = {}
+//   const workspaces = pkg.workspaces
+//   if (Array.isArray(workspaces)) {
+//     workspaces.forEach((pattern) => {
+//       const { found } = new GlobSync(pattern, { cwd: basePath })
+//       found.forEach((name) => {
+//         const pkg = fs.readJSONSync(
+//           path.resolve(basePath, name, '../package.json'),
+//         )
+//         results[pkg.name] = path.resolve(basePath, name, '../src')
+//       })
+//     })
+//   }
+//   return results
+// }
 
 export default {
   mode: 'development',
@@ -41,7 +41,7 @@ export default {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-    alias: getWorkspaceAlias(),
+    //alias: getWorkspaceAlias(),
   },
   externals: {
     react: 'React',
@@ -109,13 +109,14 @@ export default {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff|woff2|ttf|eot|png|jpg|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'images/[name].[ext]',
+              name: '[name].[ext]',
+              outputPath: 'images',
             },
           },
         ],
